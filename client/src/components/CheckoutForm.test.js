@@ -15,12 +15,16 @@ const header = getByText(/checkout form/i);
 expect(header).toBeInTheDocument();
 });
 
-test("form shows success message on submit with form details",  () => {
+test("form shows success message on submit with form details",  async() => {
 //Arrange
-const { getByTestId} = render (<CheckoutForm />);
+const { getByTestId } = render (<CheckoutForm />);
 
 const btnTest = getByTestId("check")
+//const successMsg = getByTestId("successMessage")
+
+fireEvent.click(btnTest)
 
 
 expect(btnTest).toBeInTheDocument;
+//expect(successMsg).toBeinTheDocument;
 });
