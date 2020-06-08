@@ -28,15 +28,36 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
-1. Explain how to build stateful class components.
+Q1. Explain how to build stateful class components.
 
-2. Describe the different phases of the component lifecycle.
+A1. Declare a class component by extending it to the React.Component parent class. Use a constructor function to add state and make sure to have super() otherwise you won’t have access to the this. Afterwards render UI and return JSX
+<!-- i.e -> class SomeComponent extends React.Component { 
+  constructor() { 
+    super(); 
+    this.state = { //set state }; }  
+    render() { return //return JSX <div> Blah</div>}}; -->
 
-3. Demonstrate an understanding of class component lifecycle methods.
+Q2. Describe the different phases of the component lifecycle.
 
-4. Define stateful logic.
+A2. Mounting Phase (Birth): Render method is invoked and componentDidMount gets called. The component built from ground up and initial data to be accessed will be defined by the constructor. 
+Updating Phase (Growth): Updates components data. setState can be used to change component state and force a re-render.
+Un-mounting Phase (Death): Removes component from screen. ComponentWillUnmount can be called and be used for cleanup.
 
-5. Describe how to test a React component with React Testing Library.
+Q3. Demonstrate an understanding of class component lifecycle methods.
+
+A3. Mounting: constructor(set up state), getDerivedStatefromProps  (return state based on initial form), render (return JSX), componentDidMount (load data). 
+Updating: getDerivedStateFromProps (updates state if need be), shouldComponentUpdate (re-render? True or false), render (still going), getSnapshotBeforeUpdate (looks at attribute in current DOM and passes to componentDidUpdate), componentDidUpdate (changes are committed to DOM).
+Unmounting: componentWillUnmount (component goes away /clean up), 
+Errors: getDerivedStateFromError (something is broken and return an error and updated state), componentDidCatch (catch and logs errors. Only works in render/lifecycle method not onClick handlers)
+
+Q4. Define stateful logic.
+
+A4.Logic built into a component. Deals with state in component, such as a function that handles when the input changes on a text field or function that sets the toggle state.
+
+Q5. Describe how to test a React component with React Testing Library.
+
+A5. Arrange - set up code to be tested. Act - call a method or function that returns results of interest. Assert - what we expect to happen and hope it matches what does happen.
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -54,22 +75,22 @@ _Please follow the setup instructions closely so that you can get everything up 
 
 **Basic set up**
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
 
 **Starting the server**
 
-- [ ] Run `npm install` to download dependencies for the server.
-- [ ] Run the server using `npm start`.
-- [ ] Open a new browser tab and navigate to `http://localhost:3333/plants` - if you see a JSON object with plants data, then you know the server is running 👍
+- [x] Run `npm install` to download dependencies for the server.
+- [x] Run the server using `npm start`.
+- [x] Open a new browser tab and navigate to `http://localhost:3333/plants` - if you see a JSON object with plants data, then you know the server is running 👍
 
 **Starting the React app**
 
-- [ ] In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
-- [ ] Still inside the `client` folder run `npm run start` to run the client application.
-- [ ] Your browser should open up the project as normal
+- [x] In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
+- [x] Still inside the `client` folder run `npm run start` to run the client application.
+- [x] Your browser should open up the project as normal
 
 **Starting your test runner**
 
@@ -78,8 +99,8 @@ _Please follow the setup instructions closely so that you can get everything up 
 
 **Commit and Push OFTEN!**
 
-- [ ] Implement the project on this Branch, **committing progress & changes often.**
-- [ ] Push commits: `git push origin <firstName-lastName>`.
+- [x] Implement the project on this Branch, **committing progress & changes often.**
+- [x] Push commits: `git push origin <firstName-lastName>`.
 
 ### Task 2: Project Requirements
 
@@ -89,13 +110,13 @@ Your finished project must include all of the following requirements:
 
 Display a list of the plants from the server. This should be done in the class component `PlantList`.
 
-- [ ] In the `PlantList` class component, fetch data from the server you now have running - the data can be fetched from `http://localhost:3333/plants`
-- [ ] Set the data to a state property called `this.state.plants`
-- [ ] The render function is already built and styled. Once the data is on the state, you will see the list of plants, and you will have the functionality to add a plant to the cart
+- [x] In the `PlantList` class component, fetch data from the server you now have running - the data can be fetched from `http://localhost:3333/plants`
+- [x] Set the data to a state property called `this.state.plants`
+- [x] The render function is already built and styled. Once the data is on the state, you will see the list of plants, and you will have the functionality to add a plant to the cart
 
 #### Shopping Cart
 
-Nothing needs to be done here. You _will_ have to navigate to the cart page in your app so you can go to the checkout form for the next step.
+[x] Nothing needs to be done here. You _will_ have to navigate to the cart page in your app so you can go to the checkout form for the next step.
 
 #### Checkout Form
 
