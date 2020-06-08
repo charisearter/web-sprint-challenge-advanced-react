@@ -1,4 +1,4 @@
-import React, { version } from "react";
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import CheckoutForm from "./CheckoutForm";
 
@@ -17,11 +17,39 @@ expect(header).toBeInTheDocument();
 
 test("form shows success message on submit with form details", async () => {
 //Arrange
-const { getByTestId } = render(<CheckoutForm />);
+const { getByTestId, getByPlaceholderText  } = render(<CheckoutForm />);
 
-//Act
-const formMatch = getByTestId(/successMessage/);
+const formMatch = getByTestId('successMessage')
+
+fireEvent.change(firstName, {
+  target: { name: 'firstName', value: 'Bennder' }
+});
+
+fireEvent.change(lastName, {
+  target: { name: 'lastName', value: 'Tennington' }
+});
+
+fireEvent.change(address, {
+  target: { name: 'address', value: 'some address goes here' }
+});
+
+fireEvent.change(city, {
+  target: { name: 'city', value: 'SomeCity' }
+});
+
+fireEvent.change(state, {
+  target: { name: 'state', value: 'State' }
+});
+
+fireEvent.change(zip, {
+  target: { name: 'zip', value: '00000' }
+});
 
 //Assert
-expect(formMatch).toBeInTheDocument();
+expect(formMatch).toHaveTextContent(firstName);
+expect(formMatch).toHaveTextContent(lastName);
+expect(formMatch).toHaveTextContent(address);
+expect(formMatch).toHaveTextContent(city);
+expect(formMatch).toHaveTextContent(state);
+expect(formMatch).toHaveTextContent(zip);
 });
